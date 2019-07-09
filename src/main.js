@@ -2,19 +2,17 @@ import $ from 'jquery';
 import './styles.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Example } from './backend-code';
 import axios from "axios";
-
-let example = new Example();
 
 $(document).ready(function() {
 
   $("#testSubmit").click(function(){
-    let userName = "Fred";
+    let userName = "Billy";
     let x = $("#testUser").val();
     try {
       const params = {
-        "userName": "Fred"
+        "userName": "Billy",
+        "items": []
       }
       axios.post(`https://r11ze6nefi.execute-api.us-west-2.amazonaws.com/test/groceryusers/${userName}`, params );
     } catch (err) {
@@ -29,7 +27,23 @@ $(document).ready(function() {
         });
     }
 
+    function updateUserList() {
+      try {
+        const params = {
+          "userName": "Billy",
+          "items": "toast"
+        }
+        axios.patch(`https://r11ze6nefi.execute-api.us-west-2.amazonaws.com/test/groceryusers/${userName}`, params );
+      } catch (err) {
+        $("#test").append(`An error occured: ${err}`);
+      }
+    }
+
     getUsers();
+
+    updateUserList();
+
+    // console.log(response);
 
   });
 });
