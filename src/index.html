@@ -5,7 +5,25 @@
 </head>
 
 <body>
- <div id="test">TEST</div>
+  <div class="container">
+    <form class="userInput">
+      <div class="form-group">
+        <input type="text" id= "itemName" name="item" class="form-control" placeholder="Item">
+      </div>
+      <div class="form-group">
+        <select class="form-control" id="category">
+          <option value="0">Select Category</option>
+          <option value="produce">Fresh Produce</option>
+          <option value="Proteins">Proteins</option>
+          <option value="Other Foods">Other Foods</option>
+          <option value="Non-Foods">Non-Foods</option>
+        </select>
+      </div>
+      <button type="submit" name="Add" class="btn btn-primary">Add</button>
+    </form>
+    <hr>
+    
+  </div>
 </body>
 
 </html>
