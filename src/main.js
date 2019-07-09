@@ -5,26 +5,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 
 $(document).ready(function() {
+  // Defines function to get list
+  function getUsers() {
+    axios.get(`https://r11ze6nefi.execute-api.us-west-2.amazonaws.com/test/groceryusers`)
+      .then(response => {
+        console.log(response)
+        // $(".output").append(`<br>${response.data[x].userName}`);
+      });
+  }
+  getUsers();
 
-  $("#userInput").submit(function(){
+  $(".userInput").submit(function(event){
+    event.preventDefault();
 
     let userName = $('#itemName').val();
-    let x = $("#testUser").val();
+
+    // Adds new entry to database
     try {
       const params = {
-        "userName": "Fred"
+        "userName": userName
       }
       axios.post(`https://r11ze6nefi.execute-api.us-west-2.amazonaws.com/test/groceryusers/${userName}`, params );
     } catch (err) {
-      $("#test").append(`An error occured: ${err}`);
-    }
-
-    function getUsers() {
-      axios.get(`https://r11ze6nefi.execute-api.us-west-2.amazonaws.com/test/groceryusers`)
-        .then(response => {
-          console.log(response);
-          $("#test").append(`<br>${response.data[x].userName}`);
-        });
+      $(".output").append(`An error occured: ${err}`);
     }
 
     getUsers();
