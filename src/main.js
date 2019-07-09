@@ -2,15 +2,13 @@ import $ from 'jquery';
 import './styles.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Example } from './backend-code';
 import axios from "axios";
-
-let example = new Example();
 
 $(document).ready(function() {
 
-  $("#testSubmit").click(function(){
-    let userName = "Fred";
+  $("#userInput").submit(function(){
+
+    let userName = $('#itemName').val();
     let x = $("#testUser").val();
     try {
       const params = {
